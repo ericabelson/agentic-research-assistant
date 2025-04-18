@@ -1,27 +1,25 @@
-import arxiv
 import pymupdf
+import requests
+from biorxiv_retriever import BiorxivRetriever
 from google.adk.agents import Agent
 
 # ==============================================================================
 # Tools
 # ==============================================================================
 
-def search_arxiv(query: str):
-    """Search for scientific publications on arXiv"""
-    arxiv_client = arxiv.Client()
-    search = arxiv.Search(
-        query=query,
-        max_results=10,
-    )
-    results = arxiv_client.results(search)
-    results = str([r for r in results])
-    return results
+
+def search_biorxiv(query: str):
+    """Search for scientific publications on biorXiv"""
+    br = BiorxivRetriever()
+    papers = br.query(query)
+    return papers
 
 
-def download_arxiv_paper(id: str):
-    """Download a paper from arXiv"""
-    paper = next(arxiv.Client().results(arxiv.Search(id_list=[id])))
-    paper.download_pdf(dirpath="downloads/", filename="paper.pdf")
+def download_biorxiv_paper(biorxiv_url: str):
+    """Download a paper from biorXiv"""
+    url = biorxiv_url + ".full.pdf"
+    r = requests.get(url, allow_redirects=True)
+    open("paper.pdf", "wb").write(r.content)
     return("Downloads complete!")
 
 
@@ -42,14 +40,14 @@ def load_pdf():
 search_agent = Agent(
     name="search_agent",
     model="gemini-2.5-pro-preview-03-25",
-    description=("Look up and answer questions about research on arXiv."),
+    description=("Look up and answer questions about research on biorXiv."),
     instruction=(
         """
-        You are a helpful agent who can search papers on arXiv. Given input from
-        the user, rewrite their query to search for papers on arXiv.
+        You are a helpful agent who can search papers on biorXiv. Given input from
+        the user, rewrite their query to search for papers on biorXiv.
         """
     ),
-    tools=[search_arxiv],
+    tools=[search_biorxiv],
 )
 
 methodologies_agent = Agent(
@@ -67,7 +65,7 @@ methodologies_agent = Agent(
         4. Repeat this process until you've downloaded and extracted 3 papers
         """
     ),
-    tools=[download_arxiv_paper, load_pdf]
+    tools=[download_biorxiv_paper, load_pdf]
 )
 
 # ==============================================================================
