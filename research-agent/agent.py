@@ -15,6 +15,7 @@ def search_arxiv(query: str):
 
     results = arxiv_client.results(search)
     results = str([r for r in results])
+    return results
 
 root_agent = Agent(
     name="research_agent",
