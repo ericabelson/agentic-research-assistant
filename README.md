@@ -6,7 +6,7 @@ This repository contains an example multi-agent system built using Google's [Age
 
 The goal of this project is to demonstrate how a team of AI agents can automate parts of the scientific literature review process. Specifically, this system aims to:
 
-1.  **Search** for relevant papers on biorXiv based on a user's research topic.
+1.  **Search** for relevant papers on bioRxiv based on a user's research topic.
 2.  **Download** selected papers.
 3.  **Read** the PDF content.
 4.  **Extract** specific information, such as research methodologies.
