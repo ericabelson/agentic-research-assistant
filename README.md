@@ -17,7 +17,7 @@ The goal of this project is to demonstrate how a team of AI agents can automate 
 This system employs a multi-agent architecture orchestrated by ADK:
 
 *   **Root Agent (`research_agent`):** Acts as the supervisor, coordinating the overall workflow.
-*   **Search Agent (`search_agent`):** Specializes in searching articles in biorXiv.
+*   **Search Agent (`search_agent`):** Specializes in searching articles in bioRxiv.
 *   **Methodologies Agent (`methodologies_agent`):** Downloads papers, reads PDFs, and uses its LLM reasoning to extract methodologies from the text.
 
 ## Running the Agent
