@@ -25,7 +25,6 @@ This system employs a multi-agent architecture orchestrated by ADK:
 1.  **Clone the Repository:**
     ```bash
     git clone https://github.com/ericabelson/agentic-research-assistant.git
-    cd research-agent
     ```
 
 2.  **Install Dependencies:**
