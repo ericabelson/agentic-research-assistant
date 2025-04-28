@@ -53,7 +53,7 @@ This system employs a multi-agent architecture orchestrated by ADK:
 
 ## Blog Post
 
-Learn more about the design and implementation in our blog post: [Link to Blog Post]
+Learn more about the design and implementation in our blog post: [[Link to Blog Post](https://medium.com/@esabelson/building-an-agentic-scientific-research-team-with-googles-agent-development-kit-4c4b024e29de)]
 
 ## Contributing
 
